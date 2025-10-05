@@ -105,13 +105,14 @@
   height: 18px;
 }
 
-.ads-consent__text a {
+.ads-consent__link {
   color: #2563eb;
   text-decoration: none;
+  cursor: default;
 }
 
-.ads-consent__text a:hover {
-  text-decoration: underline;
+.ads-consent__link:hover {
+  text-decoration: none;
 }
 
 .ads-page__cta {

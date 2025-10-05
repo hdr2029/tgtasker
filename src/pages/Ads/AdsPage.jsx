@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./AdsPage.css";
 
 const TOAST_HIDE_DELAY = 3000;
@@ -82,7 +82,7 @@ const AdsPage = () => {
             onChange={(event) => setIsChecked(event.target.checked)}
           />
           <span className="ads-consent__text">
-            Я приймаю <a href="#" target="_blank" rel="noreferrer">оферту</a> та умови використання
+            Я приймаю <span className="ads-consent__link">оферту</span> та умови використання
           </span>
         </label>
 
