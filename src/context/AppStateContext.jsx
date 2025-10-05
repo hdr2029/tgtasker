@@ -19,7 +19,7 @@ const initialChannels = [
   { id: "pandochka", name: "Гончаренко центр. Online", audience: "30K", avatar: "https://static4.tgstat.ru/channels/_0/bc/bca9672d748727a5beed979a5592f467.jpg", rewardTon: 0.33, link: "https://t.me/GoncharenkoCentr_Online" },
   { id: "nechetoff", name: "Няшка", audience: "30K", avatar: "https://static8.tgstat.ru/channels/_0/7a/7aa107ce1f40dc9964d6c41767da0272.jpg", rewardTon: 0.38, link: "https://t.me/njashkachanel" },
   { id: "anime", name: "Moncheri Girl ✨", audience: "24K", avatar: "https://static10.tgstat.ru/channels/_0/a4/a49b8630942dac7ab15e52dca041a603.jpg", rewardTon: 0.3, link: "https://t.me/moncherigirl" },
-  { id: "adele", name: "Адель Оземпиковна", audience: "51.7K", avatar: "https://dummyimage.com/96x96/f472b6/ffffff&text=A", rewardTon: 0.21, link: "https://t.me/adeleoz" },
+  { id: "adele", name: "Киянин", audience: "23K", avatar: "https://static9.tgstat.ru/channels/_0/4f/4f28d1a974f70fbf1d1133384f247283.jpg", rewardTon: 0.21, link: "https://t.me/kyianyn204" },
   { id: "export", name: "ExSport", audience: "125.6K", avatar: "https://dummyimage.com/96x96/111827/ffffff&text=ES", rewardTon: 0.29, link: "https://t.me/exsport" },
   { id: "score", name: "Счёт на Стол", audience: "4.0K", avatar: "https://dummyimage.com/96x96/2563eb/ffffff&text=ST", rewardTon: 0.17, link: "https://t.me/scoreon" },
   { id: "dostoverkin", name: "Достоверкин", audience: "22.7K", avatar: "https://dummyimage.com/96x96/4b5563/ffffff&text=D", rewardTon: 0.19, link: "https://t.me/dostoverkin" },
