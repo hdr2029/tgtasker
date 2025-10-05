@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import FreelancerProfile from "./components/FreelancerProfile/FreelancerProfile";
@@ -11,6 +12,52 @@ import AdsPage from "./pages/Ads/AdsPage";
 import PayoutVerificationPage from "./pages/PayoutVerification/PayoutVerificationPage";
 
 const App = () => {
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const webApp = window.Telegram?.WebApp;
+
+    if (!webApp) {
+      return;
+    }
+
+    webApp.ready();
+
+    if (typeof webApp.expand === "function") {
+      webApp.expand();
+    }
+
+    const requestFullscreen = async () => {
+      if (typeof webApp.requestFullscreen !== "function") {
+        return;
+      }
+
+      try {
+        await webApp.requestFullscreen();
+      } catch (error) {
+        console.error("Не удалось перейти в полноэкранный режим:", error);
+      }
+    };
+
+    requestFullscreen();
+
+    const handleFullscreenChange = () => {
+      console.log("isFullscreen:", webApp.isFullscreen);
+    };
+
+    if (typeof webApp.onEvent === "function") {
+      webApp.onEvent("fullscreenChanged", handleFullscreenChange);
+    }
+
+    return () => {
+      if (typeof webApp.offEvent === "function") {
+        webApp.offEvent("fullscreenChanged", handleFullscreenChange);
+      }
+    };
+  }, []);
+
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
@@ -29,9 +76,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
-
-
