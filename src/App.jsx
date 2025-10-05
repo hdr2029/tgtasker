@@ -11,6 +11,8 @@ import ChannelsPage from "./pages/Channels/ChannelsPage";
 import AdsPage from "./pages/Ads/AdsPage";
 import PayoutVerificationPage from "./pages/PayoutVerification/PayoutVerificationPage";
 
+const TELEGRAM_TOP_CONTROLS_OFFSET_PX = 48;
+
 const App = () => {
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -34,11 +36,10 @@ const App = () => {
       }
 
       const applySafeAreaTop = () => {
-        const safeAreaTop = Number.isFinite(webApp.safeArea?.top)
-          ? Math.max(webApp.safeArea.top, 0)
-          : 16;
+        const safeAreaTop = typeof webApp.safeArea?.top === "number" ? webApp.safeArea.top : 0;
+        const offset = Math.max(safeAreaTop, 0) + TELEGRAM_TOP_CONTROLS_OFFSET_PX;
 
-        root.style.setProperty("--tg-safe-area-top", `${safeAreaTop}px`);
+        root.style.setProperty("--tg-safe-area-top", `${offset}px`);
       };
 
       const requestFullscreen = async () => {
