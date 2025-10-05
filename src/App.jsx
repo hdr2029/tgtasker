@@ -1,4 +1,4 @@
-﻿import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import FreelancerProfile from "./components/FreelancerProfile/FreelancerProfile";
 import ReferralProgramPage from "./pages/ReferralProgram/ReferralProgramPage";
@@ -12,7 +12,7 @@ import PayoutVerificationPage from "./pages/PayoutVerification/PayoutVerificatio
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<FreelancerProfile />} />
         <Route path="/channels" element={<ChannelsPage />} />
@@ -29,6 +29,8 @@ const App = () => {
 };
 
 export default App;
+
+
 
 
 
