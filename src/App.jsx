@@ -11,7 +11,7 @@ import ChannelsPage from "./pages/Channels/ChannelsPage";
 import AdsPage from "./pages/Ads/AdsPage";
 import PayoutVerificationPage from "./pages/PayoutVerification/PayoutVerificationPage";
 
-const TELEGRAM_TOP_CONTROLS_OFFSET_PX = 48;
+const TELEGRAM_TOP_CONTROLS_OFFSET_PX = 72;
 
 const App = () => {
   useEffect(() => {
