@@ -44,7 +44,24 @@ const useTelegramNavigation = () => {
       webApp.BackButton.show();
     }
 
+    const triggerBackHaptic = () => {
+      const haptic = webApp.HapticFeedback;
+
+      if (!haptic) {
+        return;
+      }
+
+      if (typeof haptic.impactOccurred === "function") {
+        haptic.impactOccurred("soft");
+      }
+
+      if (typeof haptic.notificationOccurred === "function") {
+        haptic.notificationOccurred("success");
+      }
+    };
+
     const handleBackClick = () => {
+      triggerBackHaptic();
       navigate(-1);
     };
 
