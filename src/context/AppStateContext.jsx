@@ -24,7 +24,7 @@ const initialChannels = [
   { id: "score", name: "penguman 🐧", audience: "76K", avatar: "https://static4.tgstat.ru/channels/_0/76/76e55a834e6e8e64eecc35758ac9a58b.jpg", rewardTon: 0.17, link: "https://t.me/pengu_man" },
   { id: "dostoverkin", name: "Труха ⚡️Crypto", audience: "73K", avatar: "https://static4.tgstat.ru/channels/_0/38/38ea9470e2b83bc4f26f7c31e930b453.jpg", rewardTon: 0.19, link: "https://t.me/cryptotruexa" },
   { id: "cryptonomy", name: "Українці на Кіпрі", audience: "19K", avatar: "https://static8.tgstat.ru/channels/_0/93/939e219b8c596ebe015e6c33605146b4.jpg", rewardTon: 0.27, link: "https://t.me/uacyprus" },
-  { id: "lazyinvestor", name: "Олег Артемьев | Ленивый инвестор", audience: "154.4K", avatar: "https://dummyimage.com/96x96/facc15/111827&text=OA", rewardTon: 0.34, link: "https://t.me/lazyinvestor" },
+  { id: "lazyinvestor", name: "🇺🇦 Ukraine Digital", audience: "9K", avatar: "https://static5.tgstat.ru/channels/_0/d5/d5899c9d8b19dc533db1e2d695af8c9b.jpg", rewardTon: 0.34, link: "https://t.me/ukraine_digital" },
   { id: "nishqua", name: "nishqua", audience: "172.4K", avatar: "https://dummyimage.com/96x96/0f172a/ffffff&text=NQ", rewardTon: 0.36, link: "https://t.me/nishqua" },
   { id: "masterpoll", name: "Sponsored by MasterPoll", audience: "774.3K", avatar: "https://dummyimage.com/96x96/f43f5e/ffffff&text=MP", rewardTon: 0.45, link: "https://t.me/masterpoll" },
 ];
