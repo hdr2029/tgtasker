@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
+import UnsupportedScreen from "./components/UnsupportedScreen/UnsupportedScreen";
 import FreelancerProfile from "./components/FreelancerProfile/FreelancerProfile";
 import ReferralProgramPage from "./pages/ReferralProgram/ReferralProgramPage";
 import PayoutsPage from "./pages/Payouts/PayoutsPage";
@@ -15,6 +16,24 @@ import PayoutVerificationPage from "./pages/PayoutVerification/PayoutVerificatio
 const TELEGRAM_TOP_CONTROLS_OFFSET_PX = 72;
 const TELEGRAM_BACKGROUND_COLOR = "#eaf3ff";
 const REDIRECT_STORAGE_KEY = "wella:redirect-path";
+
+const isMobileEnvironment = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  const webApp = window.Telegram?.WebApp;
+  const platform = (webApp?.platform || "").toLowerCase();
+  const isTelegram = Boolean(webApp);
+  const isTelegramMobile = platform === "ios" || platform === "android";
+
+  if (isTelegram) {
+    return isTelegramMobile;
+  }
+
+  const userAgent = window.navigator?.userAgent || "";
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+};
 
 const useTelegramNavigation = () => {
   const location = useLocation();
@@ -246,10 +265,27 @@ const TelegramAwareApp = () => {
 const App = () => {
   const [isSplashVisible, setIsSplashVisible] = useState(true);
   const [shouldRenderSplash, setShouldRenderSplash] = useState(true);
+  const [isEnvironmentChecked, setIsEnvironmentChecked] = useState(false);
+  const [isEnvironmentAllowed, setIsEnvironmentAllowed] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") {
-      return undefined;
+      return;
+    }
+
+    const allowed = isMobileEnvironment();
+    setIsEnvironmentAllowed(allowed);
+    setIsEnvironmentChecked(true);
+
+    if (!allowed) {
+      setIsSplashVisible(false);
+      setShouldRenderSplash(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isEnvironmentAllowed) {
+      return;
     }
 
     const hideTimeout = window.setTimeout(() => {
@@ -264,17 +300,25 @@ const App = () => {
       window.clearTimeout(hideTimeout);
       window.clearTimeout(removeTimeout);
     };
-  }, []);
+  }, [isEnvironmentAllowed]);
+
+  if (isEnvironmentChecked && !isEnvironmentAllowed) {
+    return <UnsupportedScreen />;
+  }
 
   const shellClassName = isSplashVisible ? "app-shell app-shell--hidden" : "app-shell";
 
   return (
     <>
-      {shouldRenderSplash ? <SplashScreen isFadingOut={!isSplashVisible} /> : null}
+      {shouldRenderSplash && isEnvironmentAllowed ? (
+        <SplashScreen isFadingOut={!isSplashVisible} />
+      ) : null}
       <div className={shellClassName}>
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
-          <TelegramAwareApp />
-        </BrowserRouter>
+        {isEnvironmentAllowed ? (
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
+            <TelegramAwareApp />
+          </BrowserRouter>
+        ) : null}
       </div>
     </>
   );
