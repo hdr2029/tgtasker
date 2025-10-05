@@ -254,11 +254,11 @@ const App = () => {
 
     const hideTimeout = window.setTimeout(() => {
       setIsSplashVisible(false);
-    }, 2500);
+    }, 2000);
 
     const removeTimeout = window.setTimeout(() => {
       setShouldRenderSplash(false);
-    }, 2900);
+    }, 2400);
 
     return () => {
       window.clearTimeout(hideTimeout);
