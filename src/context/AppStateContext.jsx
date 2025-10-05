@@ -15,7 +15,7 @@ const initialChannels = [
   { id: "videokurs", name: "ТР⚡️ХА | Україна", audience: "33K", avatar: "https://upload.wikimedia.org/wikipedia/commons/d/d4/%D0%A2%D1%80%D1%83%D1%85%D0%B0_%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0_%D0%BB%D0%BE%D0%B3%D0%BE.jpg", rewardTon: 0.18, link: "https://t.me/truua1" },
   { id: "vita", name: "Гроші в Дії", audience: "19K", avatar: "https://static2.tgstat.ru/channels/_0/63/63a8bdc92aad7e1cec3a7823dab8268d.jpg", rewardTon: 0.26, link: "https://t.me/Groshi_v_Diyi" },
   { id: "gratitude", name: "Бро скинув мем", audience: "250K", avatar: "https://static7.tgstat.ru/channels/_0/fb/fbd80319856c03b6a2a0e3c20f57cafb.jpg", rewardTon: 0.22, link: "https://t.me/bromeeems" },
-  { id: "english", name: "English Academy", audience: "28.2K", avatar: "https://dummyimage.com/96x96/1d4ed8/ffffff&text=EA", rewardTon: 0.25, link: "https://t.me/englishacademy" },
+  { id: "english", name: "Ненудна психологія 🎭", audience: "37K", avatar: "https://static5.tgstat.ru/channels/_0/9f/9f7ff49699a19f81a9a956fb2b4811b9.jpg", rewardTon: 0.25, link: "https://t.me/psychology_uk" },
   { id: "pandochka", name: "Pandochka666 | Пандочка666", audience: "65.7K", avatar: "https://dummyimage.com/96x96/86198f/ffffff&text=P6", rewardTon: 0.33, link: "https://t.me/pandochka" },
   { id: "nechetoff", name: "Nechetoff | Лайфхаки", audience: "160.3K", avatar: "https://dummyimage.com/96x96/0f172a/ffffff&text=NL", rewardTon: 0.38, link: "https://t.me/nechetoff" },
   { id: "anime", name: "مجرة الأنمي - Anime Galaxy", audience: "50.5K", avatar: "https://dummyimage.com/96x96/0ea5e9/ffffff&text=AG", rewardTon: 0.3, link: "https://t.me/animegalaxy" },
