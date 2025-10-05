@@ -4,6 +4,22 @@ import { useAppState } from "../../context/AppStateContext";
 
 const tonIconSrc = "https://files.svgcdn.io/token-branded/ton.png";
 
+const triggerChannelHaptic = () => {
+  const haptic = window?.Telegram?.WebApp?.HapticFeedback;
+
+  if (!haptic) {
+    return;
+  }
+
+  if (typeof haptic.impactOccurred === "function") {
+    haptic.impactOccurred("soft");
+  }
+
+  if (typeof haptic.notificationOccurred === "function") {
+    haptic.notificationOccurred("success");
+  }
+};
+
 const formatReward = (value) => {
   if (Number.isInteger(value)) {
     return value.toString();
@@ -29,6 +45,7 @@ const ChannelsPage = () => {
       }
 
       completeChannel(channel.id);
+      triggerChannelHaptic();
     },
     [completeChannel]
   );
