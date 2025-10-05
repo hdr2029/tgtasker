@@ -1,6 +1,6 @@
 ﻿const StatsEmptyState = () => {
   return (
-    <section className="stats-empty" aria-label="Порожній стан статистики">
+    <section className="stats-empty" aria-label="Пояснення відсутності статистики">
       <h2 className="stats-empty__title">Даних поки немає</h2>
       <p className="stats-empty__text">
         Статистика з'явиться одразу, щойно будуть перші транзакції та виплати.

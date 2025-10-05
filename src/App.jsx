@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+п»їimport { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
 import FreelancerProfile from "./components/FreelancerProfile/FreelancerProfile";
@@ -13,6 +13,7 @@ import PayoutVerificationPage from "./pages/PayoutVerification/PayoutVerificatio
 
 const TELEGRAM_TOP_CONTROLS_OFFSET_PX = 72;
 const TELEGRAM_BACKGROUND_COLOR = "#eaf3ff";
+const REDIRECT_STORAGE_KEY = "wella:redirect-path";
 
 const useTelegramNavigation = () => {
   const location = useLocation();
@@ -21,6 +22,15 @@ const useTelegramNavigation = () => {
   useEffect(() => {
     if (typeof window === "undefined") {
       return undefined;
+    }
+
+    try {
+      sessionStorage.setItem(
+        "wella:last-path",
+        `${location.pathname}${location.search}${location.hash}`
+      );
+    } catch (storageError) {
+      console.warn("Failed to persist last path", storageError);
     }
 
     const webApp = window.Telegram?.WebApp;
@@ -71,10 +81,33 @@ const useTelegramNavigation = () => {
       webApp.BackButton.offClick(handleBackClick);
       webApp.BackButton.hide();
     };
-  }, [location.pathname, navigate]);
+  }, [location.pathname, location.search, location.hash, navigate]);
 };
 
 const TelegramAwareApp = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    try {
+      const pendingRedirect = sessionStorage.getItem(REDIRECT_STORAGE_KEY);
+      if (pendingRedirect) {
+        sessionStorage.removeItem(REDIRECT_STORAGE_KEY);
+        const currentPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+        if (pendingRedirect && pendingRedirect !== currentPath) {
+          navigate(pendingRedirect, { replace: true });
+        }
+      }
+    } catch (error) {
+      console.warn("Failed to restore path from redirect", error);
+    }
+
+    return undefined;
+  }, [navigate]);
+
   useEffect(() => {
     if (typeof window === "undefined") {
       return undefined;
@@ -132,7 +165,7 @@ const TelegramAwareApp = () => {
         try {
           await webApp.requestFullscreen();
         } catch (error) {
-          console.error("Не удалось перейти в полноэкранный режим:", error);
+          console.error("РќРµ РІРґР°Р»РѕСЃСЏ РїРµСЂРµР№С‚Рё Сѓ РїРѕРІРЅРѕРµРєСЂР°РЅРЅРёР№ СЂРµР¶РёРј:", error);
         }
       };
 
