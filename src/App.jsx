@@ -17,6 +17,8 @@ const App = () => {
       return undefined;
     }
 
+    const root = document.documentElement;
+
     let cleanup = () => {};
     let intervalId = null;
 
@@ -31,6 +33,14 @@ const App = () => {
         webApp.expand();
       }
 
+      const applySafeAreaTop = () => {
+        const safeAreaTop = Number.isFinite(webApp.safeArea?.top)
+          ? Math.max(webApp.safeArea.top, 0)
+          : 16;
+
+        root.style.setProperty("--tg-safe-area-top", `${safeAreaTop}px`);
+      };
+
       const requestFullscreen = async () => {
         if (typeof webApp.requestFullscreen !== "function") {
           return;
@@ -43,20 +53,29 @@ const App = () => {
         }
       };
 
-      requestFullscreen();
-
       const handleFullscreenChange = () => {
         console.log("isFullscreen:", webApp.isFullscreen);
       };
 
+      const handleViewportChange = () => {
+        applySafeAreaTop();
+      };
+
+      applySafeAreaTop();
+      requestFullscreen();
+
       if (typeof webApp.onEvent === "function") {
         webApp.onEvent("fullscreenChanged", handleFullscreenChange);
+        webApp.onEvent("viewportChanged", handleViewportChange);
       }
 
       cleanup = () => {
         if (typeof webApp.offEvent === "function") {
           webApp.offEvent("fullscreenChanged", handleFullscreenChange);
+          webApp.offEvent("viewportChanged", handleViewportChange);
         }
+
+        root.style.setProperty("--tg-safe-area-top", "0px");
       };
 
       return true;

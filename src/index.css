@@ -1,4 +1,5 @@
 :root {
+  --tg-safe-area-top: 0px;
   font-family: "Inter", "Segoe UI", "Roboto", sans-serif;
   line-height: 1.5;
   color: #111827;
@@ -15,6 +16,8 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: inherit;
+  padding-top: calc(env(safe-area-inset-top, 0px) + var(--tg-safe-area-top));
+  transition: padding-top 0.2s ease;
 }
 
 #root {
