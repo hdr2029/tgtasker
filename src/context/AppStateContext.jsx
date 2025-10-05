@@ -26,7 +26,7 @@ const initialChannels = [
   { id: "cryptonomy", name: "Українці на Кіпрі", audience: "19K", avatar: "https://static8.tgstat.ru/channels/_0/93/939e219b8c596ebe015e6c33605146b4.jpg", rewardTon: 0.27, link: "https://t.me/uacyprus" },
   { id: "lazyinvestor", name: "🇺🇦 Ukraine Digital", audience: "9K", avatar: "https://static5.tgstat.ru/channels/_0/d5/d5899c9d8b19dc533db1e2d695af8c9b.jpg", rewardTon: 0.34, link: "https://t.me/ukraine_digital" },
   { id: "nishqua", name: "Краще перезняти!", audience: "24K", avatar: "https://static10.tgstat.ru/channels/_0/4c/4c3b22df2fc1d7efbc07d5e7a78f354a.jpg", rewardTon: 0.36, link: "https://t.me/bshootua" },
-  { id: "masterpoll", name: "Sponsored by MasterPoll", audience: "774.3K", avatar: "https://dummyimage.com/96x96/f43f5e/ffffff&text=MP", rewardTon: 0.45, link: "https://t.me/masterpoll" },
+  { id: "masterpoll", name: "Книги українською", audience: "45K", avatar: "https://static2.tgstat.ru/channels/_0/ef/ef3e9a4ed7d0eea6db6bc9791b241dc2.jpg", rewardTon: 0.45, link: "https://t.me/ukrlib" }
 ];
 
 const mergeChannels = (storedChannels) => {
