@@ -17,6 +17,23 @@ const TELEGRAM_TOP_CONTROLS_OFFSET_PX = 72;
 const TELEGRAM_BACKGROUND_COLOR = "#eaf3ff";
 const REDIRECT_STORAGE_KEY = "wella:redirect-path";
 
+const isLikelyMobile = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  const navigatorInfo = window.navigator || {};
+  const userAgent = navigatorInfo.userAgent || "";
+  const userAgentData = navigatorInfo.userAgentData;
+  const hasCoarsePointer = window.matchMedia?.("(pointer: coarse)").matches ?? false;
+  const hasTouch = typeof navigatorInfo.maxTouchPoints === "number" && navigatorInfo.maxTouchPoints > 0;
+
+  const uaMobileHint = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+  const uaDataMobile = typeof userAgentData?.mobile === "boolean" ? userAgentData.mobile : null;
+
+  return Boolean((uaDataMobile ?? uaMobileHint) || hasCoarsePointer || hasTouch);
+};
+
 const isMobileEnvironment = () => {
   if (typeof window === "undefined") {
     return false;
@@ -25,14 +42,18 @@ const isMobileEnvironment = () => {
   const webApp = window.Telegram?.WebApp;
   const platform = (webApp?.platform || "").toLowerCase();
   const isTelegram = Boolean(webApp);
-  const isTelegramMobile = platform === "ios" || platform === "android";
+  const isKnownMobilePlatform = platform === "ios" || platform === "android";
+  const looksMobile = isLikelyMobile();
 
   if (isTelegram) {
-    return isTelegramMobile;
+    return isKnownMobilePlatform && looksMobile;
   }
 
-  const userAgent = window.navigator?.userAgent || "";
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+  if (/TelegramWeb/i.test(window.navigator?.userAgent || "")) {
+    return false;
+  }
+
+  return looksMobile;
 };
 
 const useTelegramNavigation = () => {
@@ -325,3 +346,4 @@ const App = () => {
 };
 
 export default App;
+
