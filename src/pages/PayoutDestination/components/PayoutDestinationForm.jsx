@@ -7,6 +7,22 @@ const currencyOptions = [
 
 const STORAGE_KEY = "payoutDestination";
 
+const triggerHapticFeedback = () => {
+  const haptic = window?.Telegram?.WebApp?.HapticFeedback;
+
+  if (!haptic) {
+    return;
+  }
+
+  if (typeof haptic.impactOccurred === "function") {
+    haptic.impactOccurred("soft");
+  }
+
+  if (typeof haptic.notificationOccurred === "function") {
+    haptic.notificationOccurred("success");
+  }
+};
+
 const PayoutDestinationForm = () => {
   const [currency, setCurrency] = useState(currencyOptions[0].value);
   const [addressDraft, setAddressDraft] = useState("");
@@ -43,6 +59,7 @@ const PayoutDestinationForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isSaved) {
+      triggerHapticFeedback();
       return;
     }
 
@@ -55,6 +72,7 @@ const PayoutDestinationForm = () => {
     setError("");
     setSavedAddress(trimmed);
     setAddressDraft(trimmed);
+    triggerHapticFeedback();
 
     if (typeof window !== "undefined") {
       try {
