@@ -1,9 +1,25 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./StatsPage.css";
 import StatsHeader from "./components/StatsHeader";
 import StatsEmptyState from "./components/StatsEmptyState";
 
 const TOAST_HIDE_DELAY = 3000;
+
+const triggerExportHaptic = () => {
+  const haptic = window?.Telegram?.WebApp?.HapticFeedback;
+
+  if (!haptic) {
+    return;
+  }
+
+  if (typeof haptic.impactOccurred === "function") {
+    haptic.impactOccurred("rigid");
+  }
+
+  if (typeof haptic.notificationOccurred === "function") {
+    haptic.notificationOccurred("warning");
+  }
+};
 
 const StatsPage = () => {
   const [isToastVisible, setIsToastVisible] = useState(false);
@@ -21,6 +37,7 @@ const StatsPage = () => {
   }, [isToastVisible]);
 
   const handleExportClick = () => {
+    triggerExportHaptic();
     setIsToastVisible(true);
   };
 
@@ -47,12 +64,12 @@ const StatsPage = () => {
             </svg>
           </span>
           <span className="stats-page__toast-text">
-            Експорт транзакцій тимчасово недоступний. Спробуйте ще раз пізніше.
+            ????? ???????? ???? ?????????. ????? ? ? ??????.
           </span>
         </div>
 
         <button type="button" className="stats-page__export" onClick={handleExportClick}>
-          Вивантажити всі транзакції
+          ???????? ??? ????????
         </button>
       </div>
     </main>
@@ -60,4 +77,3 @@ const StatsPage = () => {
 };
 
 export default StatsPage;
-
