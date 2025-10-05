@@ -1,5 +1,6 @@
 :root {
   --tg-safe-area-top: 0px;
+  --tg-safe-area-bottom: 0px;
   font-family: "Inter", "Segoe UI", "Roboto", sans-serif;
   line-height: 1.5;
   color: #111827;
@@ -12,16 +13,24 @@
   box-sizing: border-box;
 }
 
+html {
+  overscroll-behavior-y: contain;
+  background-color: #eaf3ff;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   background-color: inherit;
   padding-top: calc(env(safe-area-inset-top, 0px) + var(--tg-safe-area-top));
-  transition: padding-top 0.2s ease;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--tg-safe-area-bottom));
+  overscroll-behavior-y: contain;
+  transition: padding-top 0.2s ease, padding-bottom 0.2s ease;
 }
 
 #root {
   min-height: 100vh;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--tg-safe-area-bottom));
 }
 
 a {

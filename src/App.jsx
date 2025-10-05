@@ -12,6 +12,7 @@ import AdsPage from "./pages/Ads/AdsPage";
 import PayoutVerificationPage from "./pages/PayoutVerification/PayoutVerificationPage";
 
 const TELEGRAM_TOP_CONTROLS_OFFSET_PX = 72;
+const TELEGRAM_BACKGROUND_COLOR = "#eaf3ff";
 
 const App = () => {
   useEffect(() => {
@@ -20,6 +21,16 @@ const App = () => {
     }
 
     const root = document.documentElement;
+    const htmlStyle = root.style;
+    const bodyStyle = document.body.style;
+
+    const restoreOverscroll = {
+      html: htmlStyle.overscrollBehaviorY,
+      body: bodyStyle.overscrollBehaviorY,
+    };
+
+    htmlStyle.overscrollBehaviorY = "contain";
+    bodyStyle.overscrollBehaviorY = "contain";
 
     let cleanup = () => {};
     let intervalId = null;
@@ -35,11 +46,22 @@ const App = () => {
         webApp.expand();
       }
 
-      const applySafeAreaTop = () => {
-        const safeAreaTop = typeof webApp.safeArea?.top === "number" ? webApp.safeArea.top : 0;
-        const offset = Math.max(safeAreaTop, 0) + TELEGRAM_TOP_CONTROLS_OFFSET_PX;
+      if (typeof webApp.setBackgroundColor === "function") {
+        webApp.setBackgroundColor(TELEGRAM_BACKGROUND_COLOR);
+      }
 
-        root.style.setProperty("--tg-safe-area-top", `${offset}px`);
+      if (typeof webApp.disableVerticalSwipes === "function") {
+        webApp.disableVerticalSwipes();
+      }
+
+      const applySafeArea = () => {
+        const safeAreaTop = Number.isFinite(webApp.safeArea?.top) ? Math.max(webApp.safeArea.top, 0) : 0;
+        const safeAreaBottom = Number.isFinite(webApp.safeArea?.bottom)
+          ? Math.max(webApp.safeArea.bottom, 0)
+          : 0;
+
+        root.style.setProperty("--tg-safe-area-top", `${safeAreaTop + TELEGRAM_TOP_CONTROLS_OFFSET_PX}px`);
+        root.style.setProperty("--tg-safe-area-bottom", `${safeAreaBottom}px`);
       };
 
       const requestFullscreen = async () => {
@@ -59,10 +81,10 @@ const App = () => {
       };
 
       const handleViewportChange = () => {
-        applySafeAreaTop();
+        applySafeArea();
       };
 
-      applySafeAreaTop();
+      applySafeArea();
       requestFullscreen();
 
       if (typeof webApp.onEvent === "function") {
@@ -76,7 +98,12 @@ const App = () => {
           webApp.offEvent("viewportChanged", handleViewportChange);
         }
 
+        if (typeof webApp.enableVerticalSwipes === "function") {
+          webApp.enableVerticalSwipes();
+        }
+
         root.style.setProperty("--tg-safe-area-top", "0px");
+        root.style.setProperty("--tg-safe-area-bottom", "0px");
       };
 
       return true;
@@ -99,6 +126,9 @@ const App = () => {
       if (intervalId !== null) {
         window.clearInterval(intervalId);
       }
+
+      htmlStyle.overscrollBehaviorY = restoreOverscroll.html || "";
+      bodyStyle.overscrollBehaviorY = restoreOverscroll.body || "";
     };
   }, []);
 
