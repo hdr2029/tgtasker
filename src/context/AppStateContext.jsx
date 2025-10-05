@@ -1,6 +1,7 @@
 ﻿import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 const STORAGE_KEY = "wella-app-state";
+const STATE_VERSION = 2;
 const CHANNEL_EXPIRATION_MS = 60 * 1000;
 
 const initialChannels = [
@@ -26,7 +27,7 @@ const initialChannels = [
   { id: "cryptonomy", name: "Українці на Кіпрі", audience: "19K", avatar: "https://static8.tgstat.ru/channels/_0/93/939e219b8c596ebe015e6c33605146b4.jpg", rewardTon: 0.27, link: "https://t.me/uacyprus" },
   { id: "lazyinvestor", name: "🇺🇦 Ukraine Digital", audience: "9K", avatar: "https://static5.tgstat.ru/channels/_0/d5/d5899c9d8b19dc533db1e2d695af8c9b.jpg", rewardTon: 0.34, link: "https://t.me/ukraine_digital" },
   { id: "nishqua", name: "Краще перезняти!", audience: "24K", avatar: "https://static10.tgstat.ru/channels/_0/4c/4c3b22df2fc1d7efbc07d5e7a78f354a.jpg", rewardTon: 0.36, link: "https://t.me/bshootua" },
-  { id: "masterpoll", name: "Книги українською", audience: "45K", avatar: "https://static2.tgstat.ru/channels/_0/ef/ef3e9a4ed7d0eea6db6bc9791b241dc2.jpg", rewardTon: 0.45, link: "https://t.me/ukrlib" }
+  { id: "masterpoll", name: "Книги українською", audience: "45K", avatar: "https://static2.tgstat.ru/channels/_0/ef/ef3e9a4ed7d0eea6db6bc9791b241dc2.jpg", rewardTon: 0.45, link: "https://t.me/ukrlib" },
 ];
 
 const mergeChannels = (storedChannels) => {
@@ -64,36 +65,41 @@ const mergeChannels = (storedChannels) => {
   return merged;
 };
 
+const createDefaultState = () => ({
+  version: STATE_VERSION,
+  balanceTon: 0,
+  channels: mergeChannels(),
+});
+
 const loadInitialState = () => {
+  const defaultState = createDefaultState();
+
   if (typeof window === "undefined") {
-    return {
-      balanceTon: 0,
-      channels: mergeChannels(),
-    };
+    return defaultState;
   }
 
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) {
-      return {
-        balanceTon: 0,
-        channels: mergeChannels(),
-      };
+      return defaultState;
     }
 
     const parsed = JSON.parse(raw);
+    if (parsed?.version !== STATE_VERSION) {
+      window.localStorage.removeItem(STORAGE_KEY);
+      return defaultState;
+    }
+
     const balance = Number(parsed?.balanceTon);
 
     return {
-      balanceTon: Number.isFinite(balance) ? balance : 0,
+      version: STATE_VERSION,
+      balanceTon: Number.isFinite(balance) ? balance : defaultState.balanceTon,
       channels: mergeChannels(parsed?.channels),
     };
   } catch (error) {
-    console.error("Не удалось прочитать состояние приложения", error);
-    return {
-      balanceTon: 0,
-      channels: mergeChannels(),
-    };
+    console.error("Не вдалося прочитати стан застосунку", error);
+    return defaultState;
   }
 };
 
@@ -162,13 +168,14 @@ const AppStateProvider = ({ children }) => {
 
     try {
       const payload = {
+        version: STATE_VERSION,
         balanceTon,
         channels,
       };
 
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
     } catch (error) {
-      console.error("Не удалось сохранить состояние приложения", error);
+      console.error("Не вдалося зберегти стан застосунку", error);
     }
   }, [balanceTon, channels]);
 
@@ -191,4 +198,3 @@ export const useAppState = () => {
 };
 
 export default AppStateProvider;
-
