@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import "./StatsPage.css";
 import StatsHeader from "./components/StatsHeader";
 import StatsEmptyState from "./components/StatsEmptyState";
@@ -64,12 +64,12 @@ const StatsPage = () => {
             </svg>
           </span>
           <span className="stats-page__toast-text">
-            ????? ???????? ???? ?????????. ????? ? ? ??????.
+            Експорт транзакцій тимчасово недоступний. Спробуйте ще раз пізніше.
           </span>
         </div>
 
         <button type="button" className="stats-page__export" onClick={handleExportClick}>
-          ???????? ??? ????????
+          Вивантажити всі транзакції
         </button>
       </div>
     </main>
