@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
 import FreelancerProfile from "./components/FreelancerProfile/FreelancerProfile";
 import ReferralProgramPage from "./pages/ReferralProgram/ReferralProgramPage";
@@ -14,7 +14,50 @@ import PayoutVerificationPage from "./pages/PayoutVerification/PayoutVerificatio
 const TELEGRAM_TOP_CONTROLS_OFFSET_PX = 72;
 const TELEGRAM_BACKGROUND_COLOR = "#eaf3ff";
 
-const App = () => {
+const useTelegramNavigation = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const webApp = window.Telegram?.WebApp;
+
+    if (!webApp) {
+      return undefined;
+    }
+
+    const isRoot = location.pathname === "/";
+
+    if (isRoot) {
+      webApp.BackButton.hide();
+      if (typeof webApp.setHeaderColor === "function") {
+        webApp.setHeaderColor(TELEGRAM_BACKGROUND_COLOR);
+      }
+
+      return undefined;
+    }
+
+    if (typeof webApp.BackButton.show === "function") {
+      webApp.BackButton.show();
+    }
+
+    const handleBackClick = () => {
+      navigate(-1);
+    };
+
+    webApp.BackButton.onClick(handleBackClick);
+
+    return () => {
+      webApp.BackButton.offClick(handleBackClick);
+      webApp.BackButton.hide();
+    };
+  }, [location.pathname, navigate]);
+};
+
+const TelegramAwareApp = () => {
   useEffect(() => {
     if (typeof window === "undefined") {
       return undefined;
@@ -132,19 +175,27 @@ const App = () => {
     };
   }, []);
 
+  useTelegramNavigation();
+
+  return (
+    <Routes>
+      <Route path="/" element={<FreelancerProfile />} />
+      <Route path="/channels" element={<ChannelsPage />} />
+      <Route path="/ads" element={<AdsPage />} />
+      <Route path="/referral" element={<ReferralProgramPage />} />
+      <Route path="/payouts" element={<PayoutsPage />} />
+      <Route path="/faq" element={<FaqPage />} />
+      <Route path="/payouts/verification" element={<PayoutVerificationPage />} />
+      <Route path="/payouts/destination" element={<PayoutDestinationPage />} />
+      <Route path="/stats" element={<StatsPage />} />
+    </Routes>
+  );
+};
+
+const App = () => {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <Routes>
-        <Route path="/" element={<FreelancerProfile />} />
-        <Route path="/channels" element={<ChannelsPage />} />
-        <Route path="/ads" element={<AdsPage />} />
-        <Route path="/referral" element={<ReferralProgramPage />} />
-        <Route path="/payouts" element={<PayoutsPage />} />
-        <Route path="/faq" element={<FaqPage />} />
-        <Route path="/payouts/verification" element={<PayoutVerificationPage />} />
-        <Route path="/payouts/destination" element={<PayoutDestinationPage />} />
-        <Route path="/stats" element={<StatsPage />} />
-      </Routes>
+      <TelegramAwareApp />
     </BrowserRouter>
   );
 };
