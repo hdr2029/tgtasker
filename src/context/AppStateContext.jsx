@@ -10,7 +10,7 @@ const initialChannels = [
   { id: "presale", name: "КАПИТАН Луганский", audience: "60K", avatar: "https://static4.tgstat.ru/channels/_0/a7/a73e7619b5d165c280986e55ca9984ff.jpg", rewardTon: 0.28, link: "https://t.me/telelug" },
   { id: "wuthering", name: "Колобок из Одессы", audience: "55K", avatar: "https://yt3.googleusercontent.com/zVlDE00J3cinusgKA5gudlAmfCP8KiC2p1JaXCbfub13muSwnZTBwfdzkHci9UerdbRpvKCb=s900-c-k-c0x00ffffff-no-rj", rewardTon: 0.5, link: "https://t.me/kolobok_odesa" },
   { id: "pc", name: "БЕЗ БАЙДИ", audience: "48K", avatar: "https://static8.tgstat.ru/channels/_0/76/760a383a040c370edfb7b17d93b5032b.jpg", rewardTon: 0.42, link: "https://t.me/bezbaidy" },
-  { id: "aware", name: "ОСОЗНАННОСТЬ 2.1", audience: "3.6K", avatar: "https://dummyimage.com/96x96/14b8a6/ffffff&text=O2", rewardTon: 0.15, link: "https://t.me/mindfulness" },
+  { id: "aware", name: "🇺🇦💥Бахмутьский балу💥🇺🇦", audience: "38K", avatar: "https://static5.tgstat.ru/channels/_0/0c/0c3eec5604f694abfa6326fb1d4485e0.jpg", rewardTon: 0.15, link: "https://t.me/bakhmutskyy" },
   { id: "memes", name: "БАЗА МЕМОВ", audience: "8.3K", avatar: "https://dummyimage.com/96x96/f97316/ffffff&text=BM", rewardTon: 0.2, link: "https://t.me/memebase" },
   { id: "videokurs", name: "Видеокурс \"Архетипические образы\"", audience: "1.1K", avatar: "https://dummyimage.com/96x96/7c2d12/ffffff&text=AO", rewardTon: 0.18, link: "https://t.me/archetypes" },
   { id: "vita", name: "VITA VIRTUS", audience: "35.7K", avatar: "https://dummyimage.com/96x96/4338ca/ffffff&text=VV", rewardTon: 0.26, link: "https://t.me/vitavirtus" },
