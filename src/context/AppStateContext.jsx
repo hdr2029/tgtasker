@@ -5,7 +5,7 @@ const CHANNEL_EXPIRATION_MS = 60 * 1000;
 
 const initialChannels = [
   { id: "romancev", name: "Карта повітряних тривог", audience: "650K", avatar: "https://cdn4.telesco.pe/file/DWCWl9eB0Lj5WnHZhsdaJD_g6vEDRJ_fvEPrB5zDanehvakCFt3OhVIgvMuA9lrye9CrspqI2gHMRA5NbwwUbusrcEdJzbe_9zFnsHE0jdj11sHkTPv3j_6izq5tTuSwm_0UaRbT75WLZVfTf5lhmysP13pBsDlnbUAcj9Xo7NpsbD05_wu7NV9T95X9BPa8f5XszOoMkCpVw_5tYq-fFVIW5Toj7dP-xRJgGTkOZ7J2P4aQjkUUJJ8txzLJMKOO-vg4w8kAWJvfFbvwhz_xTUPcEeiOPKzawNvkWyoRLUAKC56KGzG2v8qoV279VGr2r0gg_jpeQwYQSSuGaZ7apg.jpg", rewardTon: 0.5, link: "https://t.me/povitryanatrivogaaa" },
-  { id: "gulag", name: "Gulag", audience: "193.7K", avatar: "https://dummyimage.com/96x96/111827/ffffff&text=G", rewardTon: 0.4, link: "https://t.me/telegram" },
+  { id: "gulag", name: "ГОНЧАРЕНКО", audience: "215K", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz-VwZNkjf5ff-a0vS0mFR4zKEH7J7DSkpWg&s", rewardTon: 0.4, link: "https://t.me/oleksiihoncharenko" },
   { id: "reality", name: "ВСЕ РЕАЛИТИ", audience: "121.3K", avatar: "https://dummyimage.com/96x96/0f172a/ffffff&text=VR", rewardTon: 0.35, link: "https://t.me/WallaNews" },
   { id: "presale", name: "Presale RU", audience: "88.6K", avatar: "https://dummyimage.com/96x96/312e81/ffffff&text=PR", rewardTon: 0.28, link: "https://t.me/trending" },
   { id: "wuthering", name: "Wuthering Waves", audience: "233.7K", avatar: "https://dummyimage.com/96x96/6366f1/ffffff&text=WW", rewardTon: 0.5, link: "https://t.me/wavesgame" },
