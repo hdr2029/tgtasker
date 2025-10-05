@@ -1,0 +1,198 @@
+﻿.referral-page {
+  min-height: 100vh;
+  background: #eef2ff;
+  display: flex;
+  justify-content: center;
+  padding: clamp(32px, 10vw, 64px) clamp(20px, 6vw, 32px);
+  color: #111827;
+  font-family: "Inter", "Segoe UI", "Roboto", sans-serif;
+}
+
+.referral-page__inner {
+  width: min(640px, 100%);
+  background: #f6f7ff;
+  border-radius: 24px;
+  padding: clamp(32px, 8vw, 48px) clamp(24px, 8vw, 40px) clamp(40px, 10vw, 56px);
+  box-shadow: 0 18px 42px rgba(60, 80, 120, 0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 4vw, 24px);
+}
+
+.referral-page__hero {
+  width: clamp(88px, 20vw, 112px);
+  height: clamp(88px, 20vw, 112px);
+  border-radius: 24px;
+  object-fit: cover;
+  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.16);
+}
+
+.referral-page__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.referral-page__subtitle {
+  margin: 0;
+  font-size: clamp(1rem, 2.6vw, 1.15rem);
+  text-align: center;
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.referral-page__more {
+  border: none;
+  background: none;
+  color: #2563eb;
+  font-size: clamp(1rem, 2.4vw, 1.1rem);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.referral-page__more:hover {
+  text-decoration: underline;
+}
+
+.referral-page__card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 4vw, 18px);
+  padding: clamp(16px, 4.5vw, 22px);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(15, 28, 50, 0.1);
+}
+
+.referral-page__card-icon {
+  flex: 0 0 clamp(38px, 8vw, 44px);
+  height: clamp(38px, 8vw, 44px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ede9fe, #c7d2fe);
+  color: #4338ca;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+}
+
+.referral-page__card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.referral-page__card-title {
+  font-size: clamp(1.05rem, 3vw, 1.2rem);
+  font-weight: 600;
+}
+
+.referral-page__card-text {
+  font-size: clamp(0.95rem, 2.6vw, 1.05rem);
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+.referral-page__card-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5f5;
+}
+
+.referral-page__card-arrow-svg {
+  width: clamp(18px, 3vw, 20px);
+  height: clamp(18px, 3vw, 20px);
+}
+
+.referral-page__summary {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 3vw, 16px);
+}
+
+.referral-page__summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(18px, 4.8vw, 24px);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(15, 28, 50, 0.1);
+}
+
+.referral-page__summary-card--compact {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.referral-page__summary-label {
+  font-size: clamp(1rem, 2.6vw, 1.1rem);
+  color: #6b7280;
+}
+
+.referral-page__summary-value {
+  font-size: clamp(1.6rem, 3.6vw, 2rem);
+  font-weight: 700;
+  color: #111827;
+}
+
+.referral-page__verify {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: clamp(16px, 4.5vw, 20px);
+  background: linear-gradient(95deg, #2563eb, #3b82f6);
+  color: #ffffff;
+  font-size: clamp(1rem, 2.6vw, 1.15rem);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.referral-page__verify:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 38px rgba(59, 130, 246, 0.32);
+}
+
+.referral-page__verify:focus-visible {
+  outline: 2px solid rgba(191, 219, 254, 0.9);
+  outline-offset: 3px;
+}
+
+.referral-page__verify-hint {
+  margin: 0;
+  font-size: clamp(0.9rem, 2.3vw, 1rem);
+  color: #4b5563;
+  text-align: center;
+  max-width: 480px;
+}
+@media (max-width: 520px) {
+  .referral-page {
+    padding-inline: clamp(16px, 4vw, 24px);
+  }
+
+  .referral-page__inner {
+    border-radius: 20px;
+    padding: clamp(24px, 10vw, 36px);
+  }
+
+  .referral-page__card {
+    align-items: flex-start;
+  }
+
+  .referral-page__card-arrow {
+    align-self: center;
+  }
+}
+

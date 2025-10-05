@@ -1,0 +1,102 @@
+﻿.faq-page {
+  display: flex;
+  justify-content: center;
+  padding: clamp(36px, 10vw, 72px) clamp(16px, 6vw, 48px);
+  background: linear-gradient(180deg, #eef2ff 0%, #f9faff 100%);
+  min-height: 100vh;
+  color: #0f172a;
+  font-family: "Inter", "Segoe UI", "Roboto", sans-serif;
+}
+
+.faq-page__inner {
+  width: min(760px, 100%);
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 28px;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+  padding: clamp(32px, 8vw, 48px) clamp(24px, 7vw, 40px) clamp(40px, 9vw, 60px);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 5vw, 32px);
+  box-sizing: border-box;
+}
+
+.faq-page__title {
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.faq-page__hero {
+  margin-top: clamp(16px, 3vw, 24px);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(32px, 8vw, 44px);
+}
+
+.faq-page__hero-icon {
+  width: clamp(160px, 40vw, 240px);
+  height: auto;
+}
+
+.faq-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 3vw, 18px);
+}
+
+.faq-page__paragraph {
+  margin: 0;
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+  line-height: 1.65;
+  color: #1f2937;
+}
+
+.faq-page__card {
+  background: rgba(236, 239, 255, 0.8);
+  border-radius: 22px;
+  padding: clamp(20px, 5vw, 26px);
+  box-shadow: 0 18px 36px rgba(59, 130, 246, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 3vw, 16px);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+.faq-page__card-title {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.6vw, 1.3rem);
+  font-weight: 600;
+  color: #1d4ed8;
+}
+
+.faq-page__card-text {
+  margin: 0;
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  line-height: 1.65;
+  color: #334155;
+}
+
+.faq-page__link {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.faq-page__link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .faq-page {
+    padding: clamp(28px, 9vw, 48px) clamp(12px, 6vw, 24px);
+  }
+
+  .faq-page__inner {
+    border-radius: 24px;
+    padding: clamp(24px, 10vw, 36px);
+  }
+}

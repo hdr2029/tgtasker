@@ -1,0 +1,181 @@
+.payout-verification {
+  display: flex;
+  justify-content: center;
+  padding: clamp(32px, 10vw, 72px) clamp(16px, 6vw, 64px);
+  background: linear-gradient(180deg, #f4f7ff 0%, #ffffff 10%, #ffffff 100%);
+}
+
+.payout-verification__inner {
+  width: min(760px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vw, 32px);
+}
+
+.payout-verification__header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 3vw, 18px);
+}
+
+.payout-verification__title {
+  margin: 0;
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  font-weight: 700;
+  color: #111827;
+}
+
+.payout-verification__subtitle {
+  margin: 0;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.payout-verification__addresses {
+  display: grid;
+  gap: clamp(14px, 3vw, 20px);
+}
+
+.payout-verification__address-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: clamp(18px, 4vw, 24px);
+  border: 1px solid rgba(59, 130, 246, 0.12);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.02));
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.12);
+  color: #1d4ed8;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.payout-verification__address-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.18);
+}
+
+.payout-verification__address-card:focus-visible {
+  outline: 2px solid rgba(37, 99, 235, 0.6);
+  outline-offset: 3px;
+}
+
+.payout-verification__address-card--copied {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 16px 32px rgba(16, 185, 129, 0.18);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.04));
+  color: #047857;
+}
+
+.payout-verification__address-label {
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  font-weight: 600;
+  color: inherit;
+}
+
+.payout-verification__address-value {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+  letter-spacing: 0.02em;
+  word-break: break-all;
+  color: inherit;
+}
+
+.payout-verification__address-description {
+  font-size: clamp(0.88rem, 2.1vw, 1rem);
+  color: rgba(17, 24, 39, 0.65);
+}
+
+.payout-verification__address-card--copied .payout-verification__address-description {
+  color: rgba(4, 120, 87, 0.7);
+}
+
+.payout-verification__address-action {
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  font-weight: 600;
+  color: rgba(17, 24, 39, 0.6);
+}
+
+.payout-verification__address-card--copied .payout-verification__address-action {
+  color: rgba(4, 120, 87, 0.9);
+}
+
+.payout-verification__process {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 4vw, 28px);
+  padding: clamp(22px, 5vw, 28px);
+  border-radius: 28px;
+  background: linear-gradient(160deg, rgba(99, 102, 241, 0.12) 0%, rgba(56, 189, 248, 0.08) 100%);
+  box-shadow: 0 18px 36px rgba(79, 70, 229, 0.16);
+}
+
+.payout-verification__process-title {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.payout-verification__steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(16px, 3vw, 22px);
+}
+
+.payout-verification__step {
+  display: flex;
+  gap: 14px;
+  padding: clamp(14px, 3vw, 18px);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.12);
+}
+
+.payout-verification__step-number {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.28), rgba(37, 99, 235, 0.4));
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.payout-verification__step-title {
+  margin: 0 0 6px;
+  font-size: clamp(1rem, 2.3vw, 1.2rem);
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.payout-verification__step-text {
+  margin: 0;
+  font-size: clamp(0.9rem, 2.1vw, 1rem);
+  line-height: 1.5;
+  color: rgba(31, 41, 55, 0.74);
+}
+
+.payout-verification__footnote {
+  margin: 0;
+  font-size: clamp(0.9rem, 2.1vw, 1rem);
+  line-height: 1.6;
+  color: rgba(17, 24, 39, 0.75);
+}
+
+@media (max-width: 640px) {
+  .payout-verification {
+    padding: clamp(24px, 8vw, 48px) clamp(12px, 6vw, 28px);
+  }
+
+  .payout-verification__process {
+    padding: clamp(18px, 5vw, 24px);
+  }
+}
