@@ -13,7 +13,7 @@ const initialChannels = [
   { id: "aware", name: "🇺🇦💥Бахмутьский балу💥🇺🇦", audience: "38K", avatar: "https://static5.tgstat.ru/channels/_0/0c/0c3eec5604f694abfa6326fb1d4485e0.jpg", rewardTon: 0.15, link: "https://t.me/bakhmutskyy" },
   { id: "memes", name: "Crypto Bulka", audience: "60K", avatar: "https://static9.tgstat.ru/channels/_0/35/3535c3f52371a0c7c600ae1891f6dde9.jpg", rewardTon: 0.2, link: "https://t.me/bulka_crypto" },
   { id: "videokurs", name: "ТР⚡️ХА | Україна", audience: "33K", avatar: "https://upload.wikimedia.org/wikipedia/commons/d/d4/%D0%A2%D1%80%D1%83%D1%85%D0%B0_%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0_%D0%BB%D0%BE%D0%B3%D0%BE.jpg", rewardTon: 0.18, link: "https://t.me/truua1" },
-  { id: "vita", name: "VITA VIRTUS", audience: "35.7K", avatar: "https://dummyimage.com/96x96/4338ca/ffffff&text=VV", rewardTon: 0.26, link: "https://t.me/vitavirtus" },
+  { id: "vita", name: "Гроші в Дії", audience: "19K", avatar: "https://static2.tgstat.ru/channels/_0/63/63a8bdc92aad7e1cec3a7823dab8268d.jpg", rewardTon: 0.26, link: "https://t.me/Groshi_v_Diyi" },
   { id: "gratitude", name: "شکرگزاری \"علیرضا عبیدی\"", audience: "36.4K", avatar: "https://dummyimage.com/96x96/d946ef/ffffff&text=IR", rewardTon: 0.22, link: "https://t.me/gratitude" },
   { id: "english", name: "English Academy", audience: "28.2K", avatar: "https://dummyimage.com/96x96/1d4ed8/ffffff&text=EA", rewardTon: 0.25, link: "https://t.me/englishacademy" },
   { id: "pandochka", name: "Pandochka666 | Пандочка666", audience: "65.7K", avatar: "https://dummyimage.com/96x96/86198f/ffffff&text=P6", rewardTon: 0.33, link: "https://t.me/pandochka" },
