@@ -21,7 +21,7 @@ const initialChannels = [
   { id: "anime", name: "Moncheri Girl ✨", audience: "24K", avatar: "https://static10.tgstat.ru/channels/_0/a4/a49b8630942dac7ab15e52dca041a603.jpg", rewardTon: 0.3, link: "https://t.me/moncherigirl" },
   { id: "adele", name: "Киянин", audience: "23K", avatar: "https://static9.tgstat.ru/channels/_0/4f/4f28d1a974f70fbf1d1133384f247283.jpg", rewardTon: 0.21, link: "https://t.me/kyianyn204" },
   { id: "export", name: "срач в хаті 2.0", audience: "19K", avatar: "https://static1.tgstat.ru/channels/_0/ae/aec0635efbe1ae1b93a8dcba94a850b8.jpg", rewardTon: 0.29, link: "https://t.me/srachvhati2" },
-  { id: "score", name: "Счёт на Стол", audience: "4.0K", avatar: "https://dummyimage.com/96x96/2563eb/ffffff&text=ST", rewardTon: 0.17, link: "https://t.me/scoreon" },
+  { id: "score", name: "penguman 🐧", audience: "76K", avatar: "https://static4.tgstat.ru/channels/_0/76/76e55a834e6e8e64eecc35758ac9a58b.jpg", rewardTon: 0.17, link: "https://t.me/pengu_man" },
   { id: "dostoverkin", name: "Достоверкин", audience: "22.7K", avatar: "https://dummyimage.com/96x96/4b5563/ffffff&text=D", rewardTon: 0.19, link: "https://t.me/dostoverkin" },
   { id: "cryptonomy", name: "Cryptonomy", audience: "30.9K", avatar: "https://dummyimage.com/96x96/1e3a8a/ffffff&text=CN", rewardTon: 0.27, link: "https://t.me/cryptonomy" },
   { id: "lazyinvestor", name: "Олег Артемьев | Ленивый инвестор", audience: "154.4K", avatar: "https://dummyimage.com/96x96/facc15/111827&text=OA", rewardTon: 0.34, link: "https://t.me/lazyinvestor" },
