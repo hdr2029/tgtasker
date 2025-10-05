@@ -1,6 +1,7 @@
-﻿import { useEffect } from "react";
+﻿import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
+import SplashScreen from "./components/SplashScreen/SplashScreen";
 import FreelancerProfile from "./components/FreelancerProfile/FreelancerProfile";
 import ReferralProgramPage from "./pages/ReferralProgram/ReferralProgramPage";
 import PayoutsPage from "./pages/Payouts/PayoutsPage";
@@ -243,10 +244,39 @@ const TelegramAwareApp = () => {
 };
 
 const App = () => {
+  const [isSplashVisible, setIsSplashVisible] = useState(true);
+  const [shouldRenderSplash, setShouldRenderSplash] = useState(true);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const hideTimeout = window.setTimeout(() => {
+      setIsSplashVisible(false);
+    }, 2500);
+
+    const removeTimeout = window.setTimeout(() => {
+      setShouldRenderSplash(false);
+    }, 2900);
+
+    return () => {
+      window.clearTimeout(hideTimeout);
+      window.clearTimeout(removeTimeout);
+    };
+  }, []);
+
+  const shellClassName = isSplashVisible ? "app-shell app-shell--hidden" : "app-shell";
+
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <TelegramAwareApp />
-    </BrowserRouter>
+    <>
+      {shouldRenderSplash ? <SplashScreen isFadingOut={!isSplashVisible} /> : null}
+      <div className={shellClassName}>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <TelegramAwareApp />
+        </BrowserRouter>
+      </div>
+    </>
   );
 };
 

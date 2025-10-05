@@ -1,0 +1,19 @@
+﻿.splash-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaf3ff;
+  z-index: 1000;
+  transition: opacity 0.4s ease;
+}
+
+.splash-screen--fade-out {
+  opacity: 0;
+}
+
+.splash-screen__animation {
+  width: min(260px, 70vw);
+  aspect-ratio: 1 / 1;
+}
