@@ -14,46 +14,70 @@ import PayoutVerificationPage from "./pages/PayoutVerification/PayoutVerificatio
 const App = () => {
   useEffect(() => {
     if (typeof window === "undefined") {
-      return;
+      return undefined;
     }
 
-    const webApp = window.Telegram?.WebApp;
+    let cleanup = () => {};
+    let intervalId = null;
 
-    if (!webApp) {
-      return;
-    }
-
-    webApp.ready();
-
-    if (typeof webApp.expand === "function") {
-      webApp.expand();
-    }
-
-    const requestFullscreen = async () => {
-      if (typeof webApp.requestFullscreen !== "function") {
-        return;
+    const initialiseWebApp = (webApp) => {
+      if (!webApp) {
+        return false;
       }
 
-      try {
-        await webApp.requestFullscreen();
-      } catch (error) {
-        console.error("Не удалось перейти в полноэкранный режим:", error);
+      webApp.ready();
+
+      if (typeof webApp.expand === "function") {
+        webApp.expand();
       }
+
+      const requestFullscreen = async () => {
+        if (typeof webApp.requestFullscreen !== "function") {
+          return;
+        }
+
+        try {
+          await webApp.requestFullscreen();
+        } catch (error) {
+          console.error("Не удалось перейти в полноэкранный режим:", error);
+        }
+      };
+
+      requestFullscreen();
+
+      const handleFullscreenChange = () => {
+        console.log("isFullscreen:", webApp.isFullscreen);
+      };
+
+      if (typeof webApp.onEvent === "function") {
+        webApp.onEvent("fullscreenChanged", handleFullscreenChange);
+      }
+
+      cleanup = () => {
+        if (typeof webApp.offEvent === "function") {
+          webApp.offEvent("fullscreenChanged", handleFullscreenChange);
+        }
+      };
+
+      return true;
     };
 
-    requestFullscreen();
+    const tryInitialise = () => initialiseWebApp(window.Telegram?.WebApp);
 
-    const handleFullscreenChange = () => {
-      console.log("isFullscreen:", webApp.isFullscreen);
-    };
-
-    if (typeof webApp.onEvent === "function") {
-      webApp.onEvent("fullscreenChanged", handleFullscreenChange);
+    if (!tryInitialise()) {
+      intervalId = window.setInterval(() => {
+        if (tryInitialise()) {
+          window.clearInterval(intervalId);
+          intervalId = null;
+        }
+      }, 200);
     }
 
     return () => {
-      if (typeof webApp.offEvent === "function") {
-        webApp.offEvent("fullscreenChanged", handleFullscreenChange);
+      cleanup();
+
+      if (intervalId !== null) {
+        window.clearInterval(intervalId);
       }
     };
   }, []);
