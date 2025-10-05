@@ -16,7 +16,7 @@ const initialChannels = [
   { id: "vita", name: "Гроші в Дії", audience: "19K", avatar: "https://static2.tgstat.ru/channels/_0/63/63a8bdc92aad7e1cec3a7823dab8268d.jpg", rewardTon: 0.26, link: "https://t.me/Groshi_v_Diyi" },
   { id: "gratitude", name: "Бро скинув мем", audience: "250K", avatar: "https://static7.tgstat.ru/channels/_0/fb/fbd80319856c03b6a2a0e3c20f57cafb.jpg", rewardTon: 0.22, link: "https://t.me/bromeeems" },
   { id: "english", name: "Ненудна психологія 🎭", audience: "37K", avatar: "https://static5.tgstat.ru/channels/_0/9f/9f7ff49699a19f81a9a956fb2b4811b9.jpg", rewardTon: 0.25, link: "https://t.me/psychology_uk" },
-  { id: "pandochka", name: "Pandochka666 | Пандочка666", audience: "65.7K", avatar: "https://dummyimage.com/96x96/86198f/ffffff&text=P6", rewardTon: 0.33, link: "https://t.me/pandochka" },
+  { id: "pandochka", name: "Гончаренко центр. Online", audience: "30K", avatar: "https://static4.tgstat.ru/channels/_0/bc/bca9672d748727a5beed979a5592f467.jpg", rewardTon: 0.33, link: "https://t.me/GoncharenkoCentr_Online" },
   { id: "nechetoff", name: "Nechetoff | Лайфхаки", audience: "160.3K", avatar: "https://dummyimage.com/96x96/0f172a/ffffff&text=NL", rewardTon: 0.38, link: "https://t.me/nechetoff" },
   { id: "anime", name: "مجرة الأنمي - Anime Galaxy", audience: "50.5K", avatar: "https://dummyimage.com/96x96/0ea5e9/ffffff&text=AG", rewardTon: 0.3, link: "https://t.me/animegalaxy" },
   { id: "adele", name: "Адель Оземпиковна", audience: "51.7K", avatar: "https://dummyimage.com/96x96/f472b6/ffffff&text=A", rewardTon: 0.21, link: "https://t.me/adeleoz" },
