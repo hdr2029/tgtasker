@@ -5,7 +5,7 @@ const currencyOptions = [
   { value: "TON", label: "TON" },
 ];
 
-const STORAGE_KEY = "payoutDestination";
+const STORAGE_KEY = "payoutDestination:v2";
 
 const triggerHapticFeedback = () => {
   const haptic = window?.Telegram?.WebApp?.HapticFeedback;
